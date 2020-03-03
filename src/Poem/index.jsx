@@ -10,11 +10,11 @@ const Poem = () => {
     .split("")
     .filter((v, i, a) => a.indexOf(v) === i && v !== " " && v !== "X");
   const stanzas = rhymeScheme.split(" ");
-  
+
   const stanzaDisplays = stanzas.map((stanza, i) => <Stanza stanza={stanza} i={i} />);
 
   return (
-    <PoemContext.Provider value={{ rhymeScheme, letters, stanzas }}>
+    <PoemContext.Provider value={{ rhymeScheme, letters }}>
       <label>
         Rhyme Scheme:&nbsp;
         <input

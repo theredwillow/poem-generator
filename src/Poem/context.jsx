@@ -2,8 +2,7 @@ import { createContext } from "react";
 
 const defaultContext = {
     rhymeScheme: "",
-    letters: [],
-    stanzas: []
+    letters: []
 };
 
 const PoemContext = createContext([defaultContext, () => {}]);
