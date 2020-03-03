@@ -1,0 +1,46 @@
+.stanza {
+  border: 1px solid black;
+  margin: 30px 20px;
+}
+
+.line {
+  border: 1px dotted grey;
+  margin: 5px;
+  position: relative;
+  min-height: 40px;
+  z-index: 0;
+}
+
+.line-letter {
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  bottom: 0;
+  font-size: 40px;
+}
+
+.letter-x {
+  background-color: #d9dddc;
+}
+
+/* Skipping 0th place */
+
+.letter-1 {
+  background-color: #ffc300;
+}
+
+.letter-2 {
+  background-color: #ff5733;
+}
+
+.letter-3 {
+  background-color: #c70039;
+}
+
+.letter-4 {
+  background-color: #900c3f;
+}
+
+.letter-5 {
+  background-color: #581845;
+}
