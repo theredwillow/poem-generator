@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import "./index.css";
+import PoemContext from "./context";
 import Stanza from "./Stanza";
+import "./index.css";
 
 const Poem = () => {
-  const [rhymeScheme, setRhymeScheme] = useState("");
 
+  const [rhymeScheme, setRhymeScheme] = useState("");
   const letters = rhymeScheme
     .split("")
     .filter((v, i, a) => a.indexOf(v) === i && v !== " " && v !== "X");
-
   const stanzas = rhymeScheme.split(" ");
-  // FIXME Don't send letters like that, set up context
-  const stanzaDisplays = stanzas.map((stanza, i) => (
-    <Stanza stanza={stanza} i={i} letters={letters} />
-  ));
+  
+  const stanzaDisplays = stanzas.map((stanza, i) => <Stanza stanza={stanza} i={i} />);
 
   return (
-    <div>
+    <PoemContext.Provider value={{ rhymeScheme, letters, stanzas }}>
       <label>
         Rhyme Scheme:&nbsp;
         <input
@@ -26,7 +24,7 @@ const Poem = () => {
         />
       </label>
       {stanzaDisplays}
-    </div>
+    </PoemContext.Provider>
   );
 };
 
