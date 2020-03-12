@@ -3,11 +3,14 @@ import Line from "./Line";
 
 const Stanza = ({ stanza, i }) => {
   const lines = stanza.split("");
-  const lineDisplays = lines.map(line => <Line line={line} />);
+  const lineDisplays = lines.map((letter, i) => <Line key={`line-${i}`} letter={letter} />);
   return (
-    <div key={stanza} className="stanza">
-      Stanza {i + 1}
-      {lineDisplays}
+    <div className="stanza">
+      Stanza {i + 1}<br/>
+      <div className="line-container">
+        {lineDisplays}
+      </div>
+      <textarea className="stanza-notes" rows={lines.length * 4} />
     </div>
   );
 };

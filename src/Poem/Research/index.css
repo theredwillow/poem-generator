@@ -1,0 +1,39 @@
+.research {
+    border: 1px solid black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.words-display {
+    margin: 5px 0;
+}
+
+.words-display > * {
+    display: inline;
+    border: 1px solid black;
+    padding: 2.5px;
+    margin: 2.5px;
+    cursor: pointer;
+}
+
+.words-display > .active {
+    background-color: black;
+    color: white;
+    font-style: italic;
+}
+
+.data-display > .data {
+    margin: 5px 0;
+}
+
+.data > .title {
+    font-weight: bold;
+}
+
+.provided-by {
+    font-style: italic;
+}

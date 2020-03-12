@@ -3,16 +3,21 @@
   margin: 30px 20px;
 }
 
+.line-container {
+  width: 75%;
+}
+
 .line {
   border: 1px dotted grey;
   margin: 5px;
-  position: relative;
-  min-height: 40px;
   z-index: 0;
 }
 
+.stanza > *, .line > * {
+  display: inline-block;
+}
+
 .line-letter {
-  position: absolute;
   z-index: 1;
   right: 5px;
   bottom: 0;
