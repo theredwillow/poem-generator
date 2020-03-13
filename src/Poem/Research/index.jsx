@@ -10,10 +10,10 @@ const Research = () => {
 
   const wordsDisplay = (
     <div className="words-display">
-      {Object.keys(data).map(w => (
+      {Object.keys(data).sort().map(w => (
         <button
           key={w}
-          className={((w === searchWord) ? 'active' : 'inactive')}
+          className={`word ${((w === searchWord) ? 'active' : 'inactive')}`}
           onClick={() => setSearchWord((w === searchWord) ? '' : w)}
         >
           {w}
@@ -41,7 +41,18 @@ const Research = () => {
                   </>
                 );
             default:
-              return (results[titleLower].length) ? results[titleLower].join(", ") : "None found.";
+              return (results[titleLower].length)
+                ? results[titleLower].map(w => (
+                    <button
+                      key={w}
+                      className='word'
+                      onClick={() => addWord(w)}
+                      disabled={data[w]}
+                      >
+                        {w}
+                    </button>
+                  ) )
+                : "None found.";
           }
         })()}<br/>
       </div>

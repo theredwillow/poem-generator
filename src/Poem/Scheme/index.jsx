@@ -21,7 +21,13 @@ const Scheme = () => {
   const edit = (
     <label>
       Rhyme Scheme:&nbsp;
-      <input type="text" name="name" value={newRhymeScheme} onChange={(e) => setNewRhymeScheme(e.target.value)} />&nbsp;
+      <input
+        type="text"
+        name="name"
+        value={newRhymeScheme}
+        onChange={(e) => setNewRhymeScheme(e.target.value)}
+        onKeyPress={(e) => { if(e.key === "Enter") setScheme(); } }
+      />&nbsp;
       <button onClick={e => setScheme()}>
         Set Rhyme Scheme
       </button>

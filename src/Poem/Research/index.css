@@ -12,18 +12,25 @@
     margin: 5px 0;
 }
 
-.words-display > * {
+.word {
     display: inline;
     border: 1px solid black;
     padding: 2.5px;
     margin: 2.5px;
+}
+
+.word:not(:disabled) {
     cursor: pointer;
 }
 
-.words-display > .active {
+.word.active {
     background-color: black;
     color: white;
     font-style: italic;
+}
+
+.word:disabled {
+    border: 1px solid gray;
 }
 
 .data-display > .data {
