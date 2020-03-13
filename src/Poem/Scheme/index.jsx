@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { PoemContext } from "../context";
+import { PoemGenerator } from "./PoemGenerator";
 
 const Scheme = () => {
   const {rhymeScheme, changeRhymeScheme} = useContext(PoemContext);
@@ -19,20 +20,23 @@ const Scheme = () => {
   }
 
   const edit = (
-    <label>
-      Rhyme Scheme:&nbsp;
-      <input
-        type="text"
-        name="name"
-        value={newRhymeScheme}
-        onChange={(e) => setNewRhymeScheme(e.target.value)}
-        onKeyPress={(e) => { if(e.key === "Enter") setScheme(); } }
-      />&nbsp;
-      <button onClick={e => setScheme()}>
-        Set Rhyme Scheme
-      </button>
-    </label>
-    // DEVNOTE Create sample poem display here
+    <>
+      <label>
+        Rhyme Scheme:&nbsp;
+        <input
+          type="text"
+          name="name"
+          value={newRhymeScheme}
+          onChange={(e) => setNewRhymeScheme(e.target.value)}
+          onKeyPress={(e) => { if(e.key === "Enter") setScheme(); } }
+        />&nbsp;
+        <button onClick={e => setScheme()}>
+          Set Rhyme Scheme
+        </button>
+      </label><br/>
+      <br/>
+      <PoemGenerator scheme={newRhymeScheme} />
+    </>
   );
   
   const view = (
