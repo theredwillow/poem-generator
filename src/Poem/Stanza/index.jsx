@@ -10,7 +10,7 @@ const Stanza = ({ stanza, i }) => {
       <div className="line-container">
         {lineDisplays}
       </div>
-      <textarea className="stanza-notes" rows={lines.length * 4} />
+      <textarea className="stanza-notes" rows={lines.length} />
     </div>
   );
 };

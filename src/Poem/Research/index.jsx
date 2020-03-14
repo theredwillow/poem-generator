@@ -24,6 +24,7 @@ const Research = () => {
 
   const buildSection = (title, func) => {
     const titleLower = title.toLowerCase().replace(/ /g, '-');
+    if (!results) { return; }
     return (
       <div className={`data ${titleLower}`}>
         <div className="title">{title}</div>
@@ -59,31 +60,28 @@ const Research = () => {
     );
   };
 
-  let dataDisplay = '';
-  if (results) {
-    dataDisplay = (
-      <div className="data-display">
-        <div className="data definitions">
-          <div className="title">Definitions</div>
-          Examples<br/>
-        </div>
-
-        {buildSection('Related Words', getRelatedWords)}
-        {buildSection('Rhyming Words', getRhymingWords)}
-        {buildSection('Synonyms', getSynonyms)}
-        {buildSection('Antonyms', getAntonyms)}
-
-        <div className="provided-by">
-          Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
-        </div>
+  const dataDisplay = (
+    <div className="data-display">
+      <div className="data definitions">
+        <div className="title">Definitions</div>
+        Examples<br/>
       </div>
-    );
-  }
 
-  const submitNewWord = () => { addWord(input); setInput(''); };
+      {buildSection('Related Words', getRelatedWords)}
+      {buildSection('Rhyming Words', getRhymingWords)}
+      {buildSection('Synonyms', getSynonyms)}
+      {buildSection('Antonyms', getAntonyms)}
+
+      <div className="provided-by">
+        Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
+      </div>
+    </div>
+  );
+
+  const submitNewWord = () => { addWord(input.toLowerCase()); setInput(''); };
   return (
-    <div className="research">
-      Word Research Assistant<br/>
+    <div id="research" className={results ? 'expanded' : ''}>
+      {dataDisplay}<br/>
       <input
         type="text"
         name="research-word"
@@ -97,7 +95,6 @@ const Research = () => {
         Add word
       </button>
       {wordsDisplay}
-      {dataDisplay}
     </div>
   );
 }
