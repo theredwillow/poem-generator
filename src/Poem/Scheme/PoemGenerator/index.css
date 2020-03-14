@@ -1,3 +1,43 @@
+#example-poem.hover-X .letter-X {
+    background-color: #d9dddc;
+}
+
+#example-poem.hover-A .letter-A {
+    background-color: #f5ea92;
+}
+  
+#example-poem.hover-B .letter-B {
+    background-color: #ffc300;
+}
+  
+#example-poem.hover-C .letter-C {
+    background-color: #ff9233;
+}
+  
+#example-poem.hover-D .letter-D {
+    background-color: #ff5733;
+}
+  
+#example-poem.hover-E .letter-E {
+    background-color: #c70074;
+}
+  
+#example-poem.hover-F .letter-F {
+    background-color: #c70039;
+}
+  
+#example-poem.hover-G .letter-G {
+    background-color: #900c3f;
+}
+  
+#example-poem.hover-H .letter-H {
+    background-color: #581845;
+}
+
+.scheme-letter {
+    font-style: italic;
+}
+
 .example-stanza {
     margin-bottom: 10px;
 }
