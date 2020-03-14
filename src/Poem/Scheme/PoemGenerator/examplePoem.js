@@ -7,21 +7,6 @@
       -Create a syllable-count dimension
 */
 
-// FIXME
-Array.prototype.byCount = function(){
-  var itm, a=[], L=this.length, o={};
-  for(var i= 0; i<L; i++){
-      itm= this[i];
-      if(!itm) continue;
-      if(o[itm]===undefined) o[itm]=1;
-      else ++o[itm];
-  }
-  for(var p in o) a[a.length]= p;
-  return a.sort(function(a, b){
-      return o[b]-o[a];
-  });
-}
-
 export const schemeExamples = [
   [
     `This is a sample.`,
@@ -58,6 +43,26 @@ export const schemeExamples = [
   ]
 ];
 
+const byCount = (arr) => {
+  let [itm, a, o] = [undefined, [], {}];
+  for (let i = 0; i < arr.length; i++) {
+    itm = arr[i];
+    if (!itm) {
+      continue;
+    }
+    if (o[itm] === undefined) {
+      o[itm] = 1;
+    }
+    else {
+      ++o[itm];
+    }
+  }
+  for (let p in o) {
+    a[a.length] = p;
+  }
+  return a.sort((a, b) => o[b]-o[a]);
+};
+
 const howManyBefore = (arr,index) => {
   const letter = arr[index];
   const re = new RegExp(letter, "g");
@@ -70,7 +75,8 @@ export const createPoem = (scheme) => {
   scheme = scheme.trim().toUpperCase().split('');
   const stanzaLocations = scheme.reduce((arr,l,i) => ((l===" ") ? [...arr, i] : arr), [-1]);
   scheme = scheme.filter((l) => (l !== " "));
-  const sortedLetters = scheme.byCount();
+  // FIXME Will change if new letter suddenly gets more frequency, don't want to change what's already produced
+  const sortedLetters = byCount(scheme);
   const sortedRhymes = schemeExamples.sort((a,b) => (b.length - a.length));
   const poem = scheme.map( (l,i) => sortedRhymes[sortedLetters.indexOf(l)][howManyBefore(scheme,i)] );
   return scheme.map( (l, i) => ({
