@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {createPoem} from "./examplePoem";
+import {exampleLines} from './examples.js';
+import {createPoem} from "./createPoem";
 import "./index.css";
 
 export const PoemGenerator = ({scheme}) => {
@@ -11,7 +12,7 @@ export const PoemGenerator = ({scheme}) => {
   }
   scheme = scheme.trim().toUpperCase();
 
-  const poem = createPoem(scheme);
+  const poem = createPoem(scheme, exampleLines);
   const stanzas = poem.reduce((acc, line, i) => {
     const newStanza = (i===0 || line.stanza !== poem[i-1].stanza);
     if (newStanza) { return [...acc, [line]]; }

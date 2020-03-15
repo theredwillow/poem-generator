@@ -1,4 +1,3 @@
-
 /*
   TODO
     -Create X scheme functionality
@@ -6,42 +5,6 @@
     EPIC
       -Create a syllable-count dimension
 */
-
-export const schemeExamples = [
-  [
-    `This is a sample.`,
-    `This is one example.`,
-    `These sentences are ample.`
-  ],
-  [
-    `This ain't a pill.`,
-    `It's quite a thrill.`,
-    `You need this, still.`,
-    `Ask my friend, Jill.`
-  ],
-  [
-    `You chose a scheme.`,
-    `It isn't too extreme.`,
-    `I like ice cream.`,
-    `Is there a theme?`,
-    `Airflow, or air stream?`,
-    `Walking on a beam.`,
-    `Thinking of a dream.`,
-    `Interupting midstream`
-  ],
-  [
-    `Choose your selection...`,
-    `Check the cross section!`,
-    `This is perfection!`,
-    `Vote this election!`,
-    `...go without detection!`,
-    `The Clarinet Section.`,
-    `Don't miss your connection!`,
-    `...my misplaced affection.`,
-    `Death by Vivisection.`,
-    `...imperfection.`
-  ]
-];
 
 const byCount = (arr) => {
   let [itm, a, o] = [undefined, [], {}];
@@ -71,14 +34,21 @@ const howManyBefore = (arr,index) => {
   return ( before.match(re) || [] ).length;
 };
 
-export const createPoem = (scheme) => {
+export const createPoem = (scheme, availableLines) => {
   scheme = scheme.trim().toUpperCase().split('');
   const stanzaLocations = scheme.reduce((arr,l,i) => ((l===" ") ? [...arr, i] : arr), [-1]);
   scheme = scheme.filter((l) => (l !== " "));
   // FIXME Will change if new letter suddenly gets more frequency, don't want to change what's already produced
   const sortedLetters = byCount(scheme);
-  const sortedRhymes = schemeExamples.sort((a,b) => (b.length - a.length));
-  const poem = scheme.map( (l,i) => sortedRhymes[sortedLetters.indexOf(l)][howManyBefore(scheme,i)] );
+  const sortedRhymes = availableLines.sort((a,b) => (b.length - a.length));
+  const poem = scheme.map( (l,i) => {
+    const schemeSet = sortedRhymes[sortedLetters.indexOf(l)];
+    // FIXME Replace line string return with actual error payload
+    if (!schemeSet) {
+      return "(Sorry... There are not enough rhyme sets for this scheme yet.)";
+    }
+    return schemeSet[howManyBefore(scheme,i)] || "(Sorry... There aren't enough lines in this rhyme set yet.)";
+  });
   return scheme.map( (l, i) => ({
     letter: l,
     num: i + 1,
