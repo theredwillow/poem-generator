@@ -39,11 +39,11 @@ export const PoemGenerator = ({scheme}) => {
       </div>
     );
   });
-  const responsiveScheme = scheme.split('').map((letter) => {
+  const responsiveScheme = scheme.split('').map((letter, i) => {
     if (letter === " ") { return ' '; }
     return (
       <span
-        key={letter}
+        key={`${i}-${letter}`}
         className={`scheme-letter letter-${letter}`}
         onMouseOver={() => setHover(letter)}
         onMouseOut={() => setHover()}
