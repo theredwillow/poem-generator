@@ -1,3 +1,7 @@
+html {
+    padding: 20px;
+}
+
 #example-poem.hover-X .letter-X {
     background-color: #d9dddc;
 }
@@ -44,4 +48,9 @@
 
 .example-stanza .title {
     font-size: small;
+    color: #787276;
+}
+
+.example-line {
+    border: 1px solid white;
 }
