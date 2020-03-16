@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Line from "./Line";
+import "./index.css";
 
 const Stanza = ({ stanza, i }) => {
 

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { PoemContext } from "../context";
 import { PoemGenerator } from "./PoemGenerator";
 
-const Scheme = () => {
+const SchemeSelector = () => {
   const {rhymeScheme, changeRhymeScheme} = useContext(PoemContext);
   const [newRhymeScheme, setNewRhymeScheme] = useState(rhymeScheme);
   const [editable, setEditable] = useState(true);
@@ -51,4 +51,4 @@ const Scheme = () => {
   return (editable) ? edit : view;
 }
 
-export default Scheme;
+export default SchemeSelector;

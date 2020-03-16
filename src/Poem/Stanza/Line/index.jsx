@@ -7,6 +7,7 @@ const Line = ({ letter }) => {
 
   return (
     <div className={`line letter-${letterNumber}`}>
+      {/* FIXME This needs to be handled by context */}
       <input type="text" />
       <div className="line-letter">{letter}</div>
     </div>

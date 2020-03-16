@@ -1,87 +1,92 @@
 import React, { useContext, useState } from "react";
-import "./index.css";
 import { ApiContext } from "../api";
+import "./index.css";
 
 const Research = () => {
+
   const [input, setInput] = useState('');
   const [searchWord, setSearchWord] = useState();
   const {data, addWord, getRelatedWords, getRhymingWords, getSynonyms, getAntonyms} = useContext(ApiContext);
-  const results = data[searchWord];
 
-  const wordsDisplay = (
-    <div className="words-display">
-      {Object.keys(data).sort().map(w => (
-        <button
-          key={w}
-          className={`word ${((w === searchWord) ? 'active' : 'inactive')}`}
-          onClick={() => setSearchWord((w === searchWord) ? '' : w)}
-        >
-          {w}
-        </button>
-      ))}
-    </div>
-  );
+  const results = data[searchWord];
+  // TODO Add support for Definitions
+  const sections = [
+    // { title: 'Definitions', func: getDefinitions },
+    { title: 'Related Words', func: getRelatedWords },
+    { title: 'Rhyming Words', func: getRhymingWords },
+    { title: 'Synonyms', func: getSynonyms },
+    { title: 'Antonyms', func: getAntonyms },
+  ];
 
   const buildSection = (title, func) => {
     const titleLower = title.toLowerCase().replace(/ /g, '-');
     if (!results) { return; }
+
+    let contents;
+    if (results[titleLower] === undefined) {
+      contents = <button onClick={() => func(searchWord)}>Get {title}</button>;
+    }
+    else if (results[titleLower] === 'LOADING') {
+      contents = 'Loading...';
+    }
+    else if (results[titleLower] === 'ERROR') {
+      contents = (
+        <>
+          Sorry, there was an error. Try again?<br/>
+          <button onClick={() => func(searchWord)}>Get {title}</button>
+        </>
+      );
+    }
+    else if (results[titleLower].length === 0) {
+      contents = 'None found.';
+    }
+    else {
+      contents = results[titleLower].map(w => (
+        <button
+          key={w}
+          className='word'
+          onClick={() => addWord(w)}
+          disabled={data[w]}
+          >
+            {w}
+        </button>
+      ) );
+    }
+
     return (
       <div className={`data ${titleLower}`}>
         <div className="title">{title}</div>
-        {(() => {
-          switch(results[titleLower]) {
-            case undefined:
-              return <button onClick={() => func(searchWord)}>Get {title}</button>;
-            case 'LOADING':
-              return 'Loading...';
-            case 'ERROR':
-                return (
-                  <>
-                    Sorry, there was an error. Try again?<br/>
-                    <button onClick={() => func(searchWord)}>Get {title}</button>
-                  </>
-                );
-            default:
-              return (results[titleLower].length)
-                ? results[titleLower].map(w => (
-                    <button
-                      key={w}
-                      className='word'
-                      onClick={() => addWord(w)}
-                      disabled={data[w]}
-                      >
-                        {w}
-                    </button>
-                  ) )
-                : "None found.";
-          }
-        })()}<br/>
+        {contents}<br/>
       </div>
     );
   };
 
-  const dataDisplay = (
-    <div className="data-display">
-      <div className="data definitions">
-        <div className="title">Definitions</div>
-        Examples<br/>
-      </div>
-
-      {buildSection('Related Words', getRelatedWords)}
-      {buildSection('Rhyming Words', getRhymingWords)}
-      {buildSection('Synonyms', getSynonyms)}
-      {buildSection('Antonyms', getAntonyms)}
-
-      <div className="provided-by">
-        Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
-      </div>
-    </div>
-  );
+  const dataToDisplay = sections.map(({title, func}) => buildSection(title, func));
 
   const submitNewWord = () => { addWord(input.toLowerCase()); setInput(''); };
+
+  const wordsToDisplay = Object.keys(data).sort().map(w => (
+    <button
+      key={w}
+      className={`word ${((w === searchWord) ? 'active' : 'inactive')}`}
+      onClick={() => setSearchWord((w === searchWord) ? '' : w)}
+    >
+      {w}
+    </button>
+  ));
+
   return (
     <div id="research" className={results ? 'expanded' : ''}>
-      {dataDisplay}<br/>
+      
+      <div className="data-display">
+        <div className="data definitions">
+          {dataToDisplay}
+        </div>
+        <div className="provided-by">
+          Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
+        </div>
+      </div>
+      
       <input
         type="text"
         name="research-word"
@@ -94,9 +99,13 @@ const Research = () => {
       >
         Add word
       </button>
-      {wordsDisplay}
+
+      <div className="words-display">
+        {wordsToDisplay}
+      </div>
+
     </div>
   );
-}
+};
 
 export default Research;

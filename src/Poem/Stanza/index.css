@@ -1,0 +1,38 @@
+.stanza {
+    border: 1px solid black;
+    margin: 30px 20px;
+}
+
+.stanza:not(.display-lines) .lines {
+    display: none;
+}
+
+.stanza:not(.display-notes) .notes {
+    display: none;
+}
+
+.lines {
+    width: 75%;
+}
+
+.line {
+    border: 1px dotted grey;
+    margin: 5px;
+    z-index: 0;
+}
+
+.line > input {
+    width: 75%;
+    margin: 5px;
+}
+
+.stanza > *, .line > * {
+    display: inline-block;
+}
+
+.line-letter {
+    z-index: 1;
+    right: 5px;
+    bottom: 0;
+    font-size: 40px;
+}

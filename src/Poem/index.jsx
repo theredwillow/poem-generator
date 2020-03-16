@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {PoemContext} from "./context";
-import Scheme from "./Scheme";
+import SchemeSelector from "./SchemeSelector";
 import Stanza from "./Stanza";
 import Research from "./Research";
 import "./index.css";
@@ -17,10 +17,17 @@ const Poem = () => {
     )
     : [];
 
+  const wholePoem = (
+    <div>
+      {JSON.stringify(stanzas)}
+    </div>
+  );
+
   return (
     <div id="poem">
-      <Scheme />
+      <SchemeSelector />
       {stanzaDisplays}
+      {wholePoem}
       <Research />
     </div>
   );
