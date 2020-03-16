@@ -7,12 +7,18 @@ export const PoemGenerator = ({scheme}) => {
 
   const [hover, setHover] = useState();
 
-  if (scheme==="") {
-    return <i>(Provide a rhyme scheme to see a poem here.)</i>;
+  if (scheme === "") {
+    return (
+      <div id="example-poem" className="no-scheme">
+        (Provide a rhyme scheme to see a poem here.)
+      </div>
+    );
   }
+
   scheme = scheme.trim().toUpperCase();
 
   const poem = createPoem(scheme, exampleLines);
+  // FIXME Move this function into a utility functions file
   const stanzas = poem.reduce((acc, line, i) => {
     const newStanza = (i===0 || line.stanza !== poem[i-1].stanza);
     if (newStanza) { return [...acc, [line]]; }
@@ -21,7 +27,7 @@ export const PoemGenerator = ({scheme}) => {
   }, []);
 
   const stanzaDisplays = stanzas.map((s, i) => {
-    // TODO Add letter-number classNames 
+    // FIXME Add letter-number classNames 
     const lineDisplays = s.map((l,j) => (
       <div
         key={`example-line-${j}`}
