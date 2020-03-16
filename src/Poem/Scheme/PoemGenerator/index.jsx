@@ -34,7 +34,7 @@ export const PoemGenerator = ({scheme}) => {
     ));
     return (
       <div key={i} className="example-stanza">
-        <div className="title">Stanza {i}</div>
+        <div className="title">Stanza {i + 1}</div>
         {lineDisplays}
       </div>
     );
