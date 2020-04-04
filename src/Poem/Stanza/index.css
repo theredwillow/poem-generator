@@ -29,8 +29,9 @@
     background-color: #EEEEEE;
 }
 
-.stanza .tabs >*:not(:disabled) {
+.stanza .tabs > *:not(:disabled):hover {
     cursor: pointer;
+    background-color: #DDDDDD;
 }
 
 /* FIXME .display's on top of each other for the border-top-left-radius: 0 */
