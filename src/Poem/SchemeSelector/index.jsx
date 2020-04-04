@@ -1,17 +1,20 @@
 import React, { useContext, useState } from "react";
 import { PoemContext } from "../context";
 import { PoemGenerator } from "./PoemGenerator";
+import createRhymeScheme from '../../utils/createRhymeScheme';
 
 import "./index.css";
 
 const SchemeSelector = () => {
   const {rhymeScheme, changeRhymeScheme} = useContext(PoemContext);
-  const [newRhymeScheme, setNewRhymeScheme] = useState(rhymeScheme);
+  const [typed, setTyped] = useState(rhymeScheme);
   const [editMode, setEditMode] = useState(true);
-  const [warning, setWarning] = useState(false);
 
-  const setScheme = () => {
-    changeRhymeScheme(newRhymeScheme);
+  const validRhymeScheme = createRhymeScheme(typed);
+
+  const handleClick = () => {
+    changeRhymeScheme(validRhymeScheme);
+    setTyped(validRhymeScheme);
     setEditMode(false);
   };
   
@@ -22,35 +25,6 @@ const SchemeSelector = () => {
     }
   }
 
-  const isCompatibleLetter = (key, scheme) => {
-    key = key.toUpperCase();
-    const currentLetters = [...new Set(scheme.toUpperCase().split(''))].sort().filter((l) => (l !== " " && l !== "X"));
-    const lastLetter = currentLetters[currentLetters.length - 1];
-    let nextLetter = (lastLetter !== undefined) ? String.fromCharCode(lastLetter.charCodeAt(0) + 1) : "A";
-    if (nextLetter === "X") {
-      nextLetter = "Y";
-    }
-    return [...currentLetters, nextLetter, "X"].includes(key);
-  };
-
-  const handleKeyDown = (e) => {
-    // FIXME Arrow controls
-    // FIXME Deletions and insertions
-    if (e.key === " " || e.key === "Tab" || e.key === "Backspace") {
-      return;
-    }
-    else if (e.key === "Enter") {
-      setScheme();
-    }
-    else if (!isCompatibleLetter(e.key, newRhymeScheme)) {
-      e.preventDefault();
-      setWarning(true);
-    }
-    else {
-      setWarning(false);
-    }
-  };
-
   const editDisplay = (
     <>
       <label>
@@ -59,25 +33,24 @@ const SchemeSelector = () => {
           id="rhyme-scheme"
           type="text"
           name="name"
-          value={newRhymeScheme}
-          onChange={(e) => setNewRhymeScheme(e.target.value.toUpperCase())}
-          onKeyDown={handleKeyDown}
+          value={typed}
+          onChange={(e) => setTyped(e.target.value.toUpperCase())}
         />&nbsp;
-        <button onClick={e => setScheme()}>
+        <button onClick={handleClick}>
           Set Rhyme Scheme
         </button>
       </label><br/>
-      <div id="scheme-warning" hidden={!warning}>
-        ^^^ Remember: Rhyme schemes should follow the alphabet, except for the no-rhyme "X"
+      <div id="scheme-warning" hidden={(typed === validRhymeScheme)}>
+        ^^^ This rhyme scheme is invalid, it will be converted to <b>"{validRhymeScheme}"</b>
       </div>
       <br/>
-      <PoemGenerator scheme={newRhymeScheme} />
+      <PoemGenerator scheme={validRhymeScheme} />
     </>
   );
   
   const viewDisplay = (
     <div>
-      Rhyme Scheme: {rhymeScheme}&nbsp;
+      Rhyme Scheme: {validRhymeScheme}&nbsp;
       <button onClick={() => enterEditMode()}>
         Edit
       </button>
