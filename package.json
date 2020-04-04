@@ -1,5 +1,6 @@
 {
-  "name": "poem-generator",
+  "name": "poem_generator",
+  "description": "Create beautiful poetry with the help of your own rhyme scheme and vocabulary tools, such as a dictionary, thesaurus, rhyming dictionary, and related words display.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
