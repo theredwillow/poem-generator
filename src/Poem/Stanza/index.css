@@ -1,36 +1,71 @@
 .stanza {
-    border: 1px solid black;
     margin: 30px 20px;
 }
 
-.stanza:not(.display-lines) .lines {
+.stanza .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stanza .tabs {
+    display: inline;
+    flex-grow: 1;
+    justify-self: end;
+    text-align: right;
+}
+
+.stanza .tabs > * {
+    margin-left: 1px;
+    border: 0px;
+    border-radius: 5px 5px 0 0;
+    font-size: 18px;
+    padding: 5px 15px;
+    background-color: #CCCCCC;
+}
+
+.stanza .tabs > *:disabled {
+    font-weight: bold;
+    color: black;
+    background-color: #EEEEEE;
+}
+
+.stanza .tabs >*:not(:disabled) {
+    cursor: pointer;
+}
+
+/* FIXME .display's on top of each other for the border-top-left-radius: 0 */
+.stanza .display {
+    padding: 5px;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    background-color: #EEEEEE;
+}
+
+.stanza:not([data-mode='lines']) .display.lines {
     display: none;
 }
 
-.stanza:not(.display-notes) .notes {
+.stanza:not([data-mode='notes']) .display.notes {
     display: none;
 }
 
-.lines {
-    width: 75%;
-}
-
-.line {
-    border: 1px dotted grey;
+.stanza .line {
+    border: 1px inset grey;
+    border-radius: 5px;
     margin: 5px;
     z-index: 0;
 }
 
-.line > input {
+.stanza .line > input {
     width: 75%;
     margin: 5px;
 }
 
-.stanza > *, .line > * {
+.line > * {
     display: inline-block;
 }
 
-.line-letter {
+.line .line-letter {
     z-index: 1;
     right: 5px;
     bottom: 0;
