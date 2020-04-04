@@ -34,6 +34,8 @@ const SchemeSelector = () => {
   };
 
   const handleKeyDown = (e) => {
+    // FIXME Arrow controls
+    // FIXME Deletions and insertions
     if (e.key === " " || e.key === "Tab" || e.key === "Backspace") {
       return;
     }
