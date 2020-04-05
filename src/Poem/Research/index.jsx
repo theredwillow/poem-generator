@@ -5,6 +5,7 @@ import "./index.css";
 const Research = () => {
 
   const [input, setInput] = useState('');
+  const [mode, setMode] = useState('Related Words');
   const [searchWord, setSearchWord] = useState();
   const {data, addWord, getRelatedWords, getRhymingWords, getSynonyms, getAntonyms} = useContext(ApiContext);
 
@@ -54,14 +55,11 @@ const Research = () => {
     }
 
     return (
-      <div className={`data ${titleLower}`}>
-        <div className="title">{title}</div>
-        {contents}<br/>
+      <div className={`data ${titleLower} ${(mode === title) ? 'active' : 'inactive'}`}>
+        {contents}
       </div>
     );
   };
-
-  const dataToDisplay = sections.map(({title, func}) => buildSection(title, func));
 
   const submitNewWord = () => { addWord(input.toLowerCase()); setInput(''); };
 
@@ -69,24 +67,50 @@ const Research = () => {
     <button
       key={w}
       className={`word ${((w === searchWord) ? 'active' : 'inactive')}`}
-      onClick={() => setSearchWord((w === searchWord) ? '' : w)}
+      onClick={() => {
+        if (w === searchWord) {
+          setSearchWord('');
+        }
+        else {
+          sections.find(s => mode === s.title).func(w);
+          setSearchWord(w);
+        }
+      }}
     >
       {w}
     </button>
   ));
 
+  const buildTab = ({title, func}) => (
+    <button
+      className={`tab ${(mode === title) ? 'active' : 'inactive'}`}
+      onClick={() => { setMode(title); func(searchWord); }}
+    >
+      {title}
+    </button>
+  );
+
   return (
-    <div id="research" className={results ? 'expanded' : ''}>
+    <div id="research">
+
+      { searchWord &&
+        <div className="data-display">
+          <div className="tabs">
+            { sections.map(buildTab) }
+            <div className="provided-by">
+              Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
+            </div>
+          </div>
+          <div className="data-area">
+            { sections.map(({title, func}) => buildSection(title, func)) }
+          </div>
+        </div>
+      }
       
-      <div className="data-display">
-        <div className="data definitions">
-          {dataToDisplay}
-        </div>
-        <div className="provided-by">
-          Data provided by <a href="https://www.datamuse.com/">Datamuse</a>
-        </div>
+      <div className="words-display">
+        {wordsToDisplay}
       </div>
-      
+
       <input
         type="text"
         name="research-word"
@@ -99,10 +123,6 @@ const Research = () => {
       >
         Add word
       </button>
-
-      <div className="words-display">
-        {wordsToDisplay}
-      </div>
 
     </div>
   );

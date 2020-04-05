@@ -1,15 +1,12 @@
 #research {
-    border: 1px solid black;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
     padding: 10px;
+    width: 96%;
     background-color: whitesmoke;
-}
-
-#research:not(.expanded) .data-display {
-    display: none;
+    border-radius: 15px 15px 0 0;
+    border: 1px solid black;
+    border-bottom: none;
 }
 
 #research input {
@@ -41,12 +38,38 @@
     border: 1px solid gray;
 }
 
-.data-display {
-    padding-bottom: 10px;
+.data-display > * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.data-display > .tabs {
+    width: 20%;
+}
+
+.data-display .tab {
+    display: block;
+    width: 100%;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    border-radius: 30px 0 0 30px;
+}
+
+.data-display .tab.active {
+    background-color: blue;
+}
+
+.data-area {
+    width: 75%;
+    border: 1px solid black;
 }
 
 .data-display > .data {
     margin: 5px 0;
+}
+
+.data.inactive {
+    display: none;
 }
 
 .data > .title {
@@ -54,6 +77,7 @@
 }
 
 .provided-by {
+    margin-top: 5px;
     font-size: 10px;
     font-style: italic;
 }
