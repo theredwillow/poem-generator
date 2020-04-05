@@ -83,7 +83,8 @@ const Research = () => {
 
   const buildTab = ({title, func}) => (
     <button
-      className={`tab ${(mode === title) ? 'active' : 'inactive'}`}
+      className="tab"
+      disabled={(mode === title)}
       onClick={() => { setMode(title); func(searchWord); }}
     >
       {title}
