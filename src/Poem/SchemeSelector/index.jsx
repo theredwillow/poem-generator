@@ -19,7 +19,7 @@ const SchemeSelector = () => {
   };
   
   const enterEditMode = () => {
-    const isSure = window.confirm("Are you sure you want to edit the rhyme scheme? You could lose some of your work.");
+    const isSure = window.confirm("Are you sure you want to edit the rhyme scheme? You will be undoing all of your work.");
     if (isSure) {
       setEditMode(true);
     }
@@ -35,10 +35,9 @@ const SchemeSelector = () => {
           name="name"
           value={typed}
           onChange={(e) => setTyped(e.target.value.toUpperCase())}
+          onKeyPress={(e) => { if (e.key === "Enter") handleClick(); } }
         />&nbsp;
-        <button onClick={handleClick}>
-          Set Rhyme Scheme
-        </button>
+        <button onClick={handleClick}>Set</button>
       </label><br/>
       <div id="scheme-warning" hidden={(typed === validRhymeScheme)}>
         ^^^ This rhyme scheme is invalid, it will be converted to <b>"{validRhymeScheme}"</b>
@@ -52,7 +51,7 @@ const SchemeSelector = () => {
     <div>
       Rhyme Scheme: {validRhymeScheme}&nbsp;
       <button onClick={() => enterEditMode()}>
-        Edit
+        Reset
       </button>
     </div>
   );
