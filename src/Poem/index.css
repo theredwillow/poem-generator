@@ -3,39 +3,38 @@
   margin-bottom: 500px;
 }
 
-.letter-x {
+.letter-X {
   background-color: #d9dddc;
 }
 
-/* Skipping 0th place */
-.letter-1 {
+.letter-A {
   background-color: #f5ea92;
 }
 
-.letter-2 {
+.letter-B {
   background-color: #ffc300;
 }
 
-.letter-3 {
+.letter-C {
   background-color: #ff9233;
 }
 
-.letter-4 {
+.letter-D {
   background-color: #ff5733;
 }
 
-.letter-5 {
+.letter-E {
   background-color: #c70074;
 }
 
-.letter-6 {
+.letter-F {
   background-color: #c70039;
 }
 
-.letter-7 {
+.letter-G {
   background-color: #900c3f;
 }
 
-.letter-8 {
+.letter-H {
   background-color: #581845;
 }
