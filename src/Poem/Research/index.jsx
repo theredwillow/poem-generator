@@ -55,7 +55,9 @@ const Research = () => {
     }
 
     return (
-      <div className={`data ${titleLower} ${(mode === title) ? 'active' : 'inactive'}`}>
+      <div
+        key={`data-${titleLower}`}
+        className={`data ${titleLower} ${(mode === title) ? 'active' : 'inactive'}`}>
         {contents}
       </div>
     );
@@ -67,7 +69,8 @@ const Research = () => {
     <button
       key={w}
       className={`word ${((w === searchWord) ? 'active' : 'inactive')}`}
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation(); 
         if (w === searchWord) {
           setSearchWord('');
         }
@@ -83,6 +86,7 @@ const Research = () => {
 
   const buildTab = ({title, func}) => (
     <button
+      key={`tab-${title}`}
       className="tab"
       disabled={(mode === title)}
       onClick={() => { setMode(title); func(searchWord); }}
@@ -108,7 +112,7 @@ const Research = () => {
         </div>
       }
       
-      <div className="words-display">
+      <div className="words-display" onClick={() => setSearchWord()}>
         {wordsToDisplay}
       </div>
 
