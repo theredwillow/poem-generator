@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Line from "./Line";
 import "./index.css";
 
 const Stanza = ({ stanza, i }) => {
@@ -7,7 +6,6 @@ const Stanza = ({ stanza, i }) => {
   const [mode, setMode] = useState('lines');
 
   const lines = stanza.split("");
-  const lineDisplays = lines.map((letter, i) => <Line key={`line-${i}`} letter={letter} />);
   return (
     <div className="stanza" data-mode={mode}>
       <div className="header">
@@ -33,7 +31,10 @@ const Stanza = ({ stanza, i }) => {
       </div>
       
       <div className="display lines">
-        {lineDisplays}
+        {
+          lines.map((letter, i) =>
+            <input key={`line-${i}`} type="text" className={`line letter-${letter}`} />)
+        }
       </div>
       
       <div className="display notes">

@@ -9,32 +9,40 @@
 
 .letter-A {
   background-color: #f5ea92;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>A</text></svg>");
 }
 
 .letter-B {
   background-color: #ffc300;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>B</text></svg>");
 }
 
 .letter-C {
   background-color: #ff9233;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>C</text></svg>");
 }
 
 .letter-D {
   background-color: #ff5733;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>D</text></svg>");
 }
 
 .letter-E {
   background-color: #c70074;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>E</text></svg>");
 }
 
 .letter-F {
   background-color: #c70039;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>F</text></svg>");
 }
 
 .letter-G {
   background-color: #900c3f;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>G</text></svg>");
 }
 
 .letter-H {
   background-color: #581845;
+  --letter-background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30px' height='40px' version='1.1'><text x='0' y='40' fill='gray' font-size='40'>H</text></svg>");
 }

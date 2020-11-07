@@ -55,20 +55,16 @@
     border-radius: 5px;
     margin: 5px;
     z-index: 0;
-}
-
-.stanza .line > input {
-    width: 75%;
+    height: 45px;
+    width: 98.5%;
+    display: block;
     margin: 5px;
-}
-
-.line > * {
-    display: inline-block;
-}
-
-.line .line-letter {
-    z-index: 1;
-    right: 5px;
-    bottom: 0;
     font-size: 40px;
+    background-image: var(--letter-background);
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.stanza .display.notes > textarea {
+    width: 98.5%;
 }
