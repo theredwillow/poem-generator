@@ -1,6 +1,7 @@
 {
   "name": "poem_generator",
   "description": "Create beautiful poetry with the help of your own rhyme scheme and vocabulary tools, such as a dictionary, thesaurus, rhyming dictionary, and related words display.",
+  "homepage": "https://theredwillow.github.io/poem-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +16,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
