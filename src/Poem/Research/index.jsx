@@ -63,7 +63,10 @@ const Research = () => {
     );
   };
 
-  const submitNewWord = () => { addWord(input.toLowerCase()); setInput(''); };
+  const submitNewWord = () => {
+    addWord(input.toLowerCase());
+    setInput('');
+  };
 
   const wordsToDisplay = Object.keys(data).sort().map(w => (
     <button
