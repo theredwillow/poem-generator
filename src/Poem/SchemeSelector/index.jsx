@@ -15,7 +15,7 @@ const SchemeSelector = () => {
   const [typed, setTyped] = useState('');
   const validRhymeScheme = createRhymeScheme(typed);
 
-  const providedPoem = exampleRhymeSchemes.find(ex => ex.scheme === typed);
+  const providedPoem = exampleRhymeSchemes.find(ex => ex.scheme === validRhymeScheme);
   const examplePoem = (typed === '')
     ? <PoemDisplay {...introPoem} />
     : (providedPoem)
@@ -43,7 +43,14 @@ const SchemeSelector = () => {
         {
           typed !== validRhymeScheme &&
           <div id="scheme-warning">
-            ^^^ This rhyme scheme is invalid, it will be converted to <b>"{validRhymeScheme}"</b>
+            This rhyme scheme is invalid, it will be converted to&nbsp;
+            <span
+              id="valid-rhyme-scheme"
+              onClick={() => setTyped(validRhymeScheme)}
+              title={`Click to replace with ${validRhymeScheme}`}
+            >
+              "<b>{validRhymeScheme}</b>". (Click here to replace now.)
+            </span>
           </div>
         }
       </div>
@@ -57,7 +64,7 @@ const SchemeSelector = () => {
           exampleRhymeSchemes.map(({name, scheme}) => (
             <div
               key={name}
-              className={`example-scheme ${(scheme === typed) ? "active" : ""}`}
+              className={`example-scheme ${(scheme === validRhymeScheme) ? "active" : ""}`}
               onClick={() => setTyped(scheme)}
             >
               <b>{name}</b><br />

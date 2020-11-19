@@ -21,6 +21,11 @@
     margin-top: 2.5px;
 }
 
+#valid-rhyme-scheme
+{
+    cursor: pointer;
+}
+
 #rhyme-scheme-examples
 {
     display: inline-block;
