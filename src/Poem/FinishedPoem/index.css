@@ -1,0 +1,24 @@
+#poem-display
+{
+  margin: 30px;
+}
+
+#poem-header
+{
+  margin: 10px;
+}
+
+#poem-title
+{
+  font-weight: bold;
+}
+
+#poem-author
+{
+  font-style: italic;
+}
+
+.poem-stanza
+{
+  margin: 10px;
+}

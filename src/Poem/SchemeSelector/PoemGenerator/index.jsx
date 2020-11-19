@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {exampleLines} from './examples.js';
-import {createPoem} from "./createPoem";
+import {createPoem} from "../../FinishedPoem/utils";
 import "./index.css";
 
 const PoemGenerator = ({scheme}) => {

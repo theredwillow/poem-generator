@@ -30,6 +30,7 @@ const Stanza = ({ stanza, i }) => {
         </div>
       </div>
       
+      {/* TODO Push lines to context */}
       <div className="display lines">
         {
           lines.map((letter, i) =>
