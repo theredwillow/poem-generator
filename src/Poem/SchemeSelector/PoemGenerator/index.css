@@ -2,7 +2,13 @@ html {
     padding: 20px;
 }
 
-#example-poem.no-scheme {
+#example-poem
+{
+    margin: 10px;
+}
+
+#example-poem.no-scheme
+{
     font-style: italic;
 }
 

@@ -1,62 +1,41 @@
 import React, { useContext, useState } from "react";
 import { PoemContext } from "../context";
-import { PoemGenerator } from "./PoemGenerator";
-import createRhymeScheme from '../../utils/createRhymeScheme';
+import PoemGenerator from "./PoemGenerator";
+import { createRhymeScheme } from './utils';
 
 import "./index.css";
 
 const SchemeSelector = () => {
-  const {rhymeScheme, changeRhymeScheme} = useContext(PoemContext);
-  const [typed, setTyped] = useState(rhymeScheme);
-  const [editMode, setEditMode] = useState(true);
+  const {changeRhymeScheme} = useContext(PoemContext);
+  const [typed, setTyped] = useState('');
 
   const validRhymeScheme = createRhymeScheme(typed);
 
-  const handleClick = () => {
-    changeRhymeScheme(validRhymeScheme);
-    setTyped(validRhymeScheme);
-    setEditMode(false);
-  };
-  
-  const enterEditMode = () => {
-    const isSure = window.confirm("Are you sure you want to edit the rhyme scheme? You will be undoing all of your work.");
-    if (isSure) {
-      setEditMode(true);
-    }
-  }
-
-  const editDisplay = (
+  return (
     <>
-      <label>
-        Rhyme Scheme:&nbsp;
-        <input
-          id="rhyme-scheme"
-          type="text"
-          name="name"
-          value={typed}
-          onChange={(e) => setTyped(e.target.value.toUpperCase())}
-          onKeyPress={(e) => { if (e.key === "Enter") handleClick(); } }
-        />&nbsp;
-        <button onClick={handleClick}>Set</button>
-      </label><br/>
-      <div id="scheme-warning" hidden={(typed === validRhymeScheme)}>
-        ^^^ This rhyme scheme is invalid, it will be converted to <b>"{validRhymeScheme}"</b>
-      </div>
-      <br/>
+      Rhyme Scheme:&nbsp;
+      <input
+        id="rhyme-scheme"
+        type="text"
+        name="name"
+        value={typed}
+        onChange={(e) => setTyped(e.target.value.toUpperCase())}
+        onKeyPress={(e) => {
+          if (e.key === "Enter")
+            changeRhymeScheme(validRhymeScheme);
+        } }
+      />&nbsp;
+      <button onClick={() => changeRhymeScheme(validRhymeScheme)}>Set</button>
+      {
+        typed !== validRhymeScheme &&
+        <div id="scheme-warning">
+          ^^^ This rhyme scheme is invalid, it will be converted to <b>"{validRhymeScheme}"</b>
+        </div>
+      }
       <PoemGenerator scheme={validRhymeScheme} />
     </>
   );
-  
-  const viewDisplay = (
-    <div>
-      Rhyme Scheme: {validRhymeScheme}&nbsp;
-      <button onClick={() => enterEditMode()}>
-        Reset
-      </button>
-    </div>
-  );
 
-  return (editMode) ? editDisplay : viewDisplay;
 }
 
 export default SchemeSelector;

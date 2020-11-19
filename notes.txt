@@ -1,0 +1,30 @@
+TODO IDEAS
+-Create an introductory poem when you ask for your rhyme scheme
+
+"The Poem Generator" by Jared Weide.
+
+Welcome to the poem *creator*, (A)
+I hope that you enjoy *it*.    (B)
+It was made by *Jared*,        (A)
+he's a *programmer*.           (B)
+
+--Form Area--
+Do you have a rhyme scheme you want to use?
+
+Example: The poem above has ABAB.
+--------------
+
+"Nonsense" by The Poem Generator
+
+
+
+-Figure out rhyme scheme as you type
+-Create option to switch from fluid to fixed modes
+-Create a way to remove research words
+-Create a way to see the finished poem outside of the tool
+-Create routes for viewing shared poems
+-Add a share screen to said viewer ("I wrote you a poem!" or "Check out this poem I made with a generator!")
+-There should be shortcuts to tab through the research, stanza lines, and notes, look for a11y guidance
+-On rhyme scheme letter click, a pop up with the currently rhyming words should appear
+-Save rhymes as they appear at end of lines. So that you can see if they match other ends of lines. Use localStorage to autosuggest things that aren't in the research tool, but have already been seen at the end of stanza lines.
+-Other to-do's in code

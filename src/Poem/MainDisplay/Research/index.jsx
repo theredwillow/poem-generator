@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ApiContext } from "../api";
+import { ApiContext } from "../../api";
 import "./index.css";
 
 const Research = () => {
@@ -33,7 +33,7 @@ const Research = () => {
     else if (results[titleLower] === 'ERROR') {
       contents = (
         <>
-          Sorry, there was an error. Try again?<br/>
+          <span id="api-error">Sorry, there was an error. Try again?</span>
           <button onClick={() => func(searchWord)}>Get {title}</button>
         </>
       );

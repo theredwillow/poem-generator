@@ -3,7 +3,7 @@ import {exampleLines} from './examples.js';
 import {createPoem} from "./createPoem";
 import "./index.css";
 
-export const PoemGenerator = ({scheme}) => {
+const PoemGenerator = ({scheme}) => {
 
   const [hover, setHover] = useState();
 
@@ -60,8 +60,10 @@ export const PoemGenerator = ({scheme}) => {
   });
   return (
     <div id="example-poem" className={(hover) ? `hover-${hover}` : ''}>
-      <b>"Poem with the {responsiveScheme} rhyme scheme"</b><br/>
+      <div id="poem-title"><b>"Poem with the {responsiveScheme} rhyme scheme"</b></div>
       {stanzaDisplays}
     </div>
   );
 };
+
+export default PoemGenerator;
