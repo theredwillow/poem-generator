@@ -28,7 +28,7 @@ const howManyBefore = (str, index) => {
  * @param {string[]} availableLines
 */
 export const createPoem = (scheme, availableLines) => {
-  scheme = scheme.trim().toUpperCase();
+  scheme = scheme.trim().replace(/ +/g, ' ').toUpperCase();
 
   // FIXME Will change if new letter suddenly gets more frequency, don't want to change what's already produced
   const sortedLetters = sortByFrequency( scheme.split('').filter(l => l !== ' ') );
@@ -53,6 +53,6 @@ export const createPoem = (scheme, availableLines) => {
  * @param {string} scheme
  */
 export const verifyPoemScheme = (poem, scheme) =>
-  scheme.trim().split(" ").every((stanzaScheme, stanzaNumber) =>
+  scheme.trim().replace(/ +/g, ' ').split(" ").every((stanzaScheme, stanzaNumber) =>
     stanzaScheme.length === poem[stanzaNumber].length
   );

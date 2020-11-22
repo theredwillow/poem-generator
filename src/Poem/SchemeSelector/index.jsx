@@ -42,7 +42,8 @@ const SchemeSelector = () => {
           name="name"
           value={typed}
           onChange={(e) =>
-            setTyped(e.target.value.toUpperCase().replace(/^ +/g, ''))
+            setTyped(e.target.value.toUpperCase()
+              .replace(/^ +/g, '').replace(/ +/g, ' '))
           }
           onKeyPress={(e) => {
             if (e.key === "Enter")
@@ -51,7 +52,7 @@ const SchemeSelector = () => {
         />&nbsp;
         <button onClick={() => changeRhymeScheme(validRhymeScheme)}>Set</button>
         {
-          typed.trim() !== validRhymeScheme &&
+          typed.trim().replace(/ +/g, ' ') !== validRhymeScheme &&
           <div id="scheme-warning">
             This rhyme scheme is invalid, it will be converted to&nbsp;
             <span

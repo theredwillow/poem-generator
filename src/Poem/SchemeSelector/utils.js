@@ -14,7 +14,8 @@ const UNCHANGED = [" ", "X"];
  * @param {string} input 
  */
 export const validateRhymeScheme = (input = "") => {
-	input = input.trim().toUpperCase().replace(/[^ A-Z]/g, '').split('');
+	input = input.trim().toUpperCase()
+		.replace(/ +/g, ' ').replace(/[^ A-Z]/g, '').split('');
 	const toBeChanged = input.filter(
 		(l, i, arr) => !UNCHANGED.includes(l) && arr.indexOf(l) === i
 	);

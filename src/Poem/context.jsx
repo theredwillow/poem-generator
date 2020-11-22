@@ -14,7 +14,7 @@ export const PoemContextProvider = (props) => {
     .split("")
     .filter((v, i, a) => a.indexOf(v) === i && v !== " " && v !== "X");
   const stanzas = (rhymeScheme !== "") ?
-    rhymeScheme.split(" ")
+    rhymeScheme.trim().replace(/ +/g, ' ').split(" ")
     : [];
 
   const changeRhymeScheme = (scheme) => {
