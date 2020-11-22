@@ -42,12 +42,8 @@
 }
 
 .data-display > * {
-    display: inline-block;
+    display: table-cell;
     vertical-align: top;
-}
-
-.data-display > .tabs {
-    width: 20%;
 }
 
 .data-display .tab {
@@ -75,10 +71,6 @@
 
 .data-display > .data {
     margin: 5px 0;
-}
-
-.data.inactive {
-    display: none;
 }
 
 .data > .title {

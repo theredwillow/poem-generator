@@ -1,62 +1,35 @@
-import React, { createContext, useState } from "react";
+import Localbase from "localbase";
+import { dictionaryTypes } from "../config";
 
-const defaultValues = {
-  data: {},
-  getWord: () => null
-}
-export const ApiContext = createContext(defaultValues);
+const db = new Localbase('dictionaries');
 
-export const ApiContextProvider = (props) => {
-  const [data, setData] = useState({});
+const addDataToLocal = async (dictionaryType, word, results) =>
+  await db.collection(dictionaryType).add({ word, results });
 
-  const fetchData = (code, usage, word) => {
-    // console.log(`https://api.datamuse.com/words?${code}=${word}`);
-    setData(
-      {
-        ...data,
-        [word]: {
-          ...data[word],
-          [usage]: 'LOADING'
-        }
-      }
-    )
-    // FIXME Escape characters?
-    fetch(`https://api.datamuse.com/words?${code}=${word}`)
-      .then(res => res.json())
-      .then((res) => {
-        setData(
-          {
-            ...data,
-            [word]: {
-              ...data[word],
-              [usage]: res.map(r => r.word)
-            }
-          }
-        )
+const fetchDataFromLocal = async (dictionaryType, word) =>
+  await db.collection(dictionaryType).doc({ word }).get();
+
+const fetchDataFromApi = async (dictionaryType, word) => {
+  const apiCode = dictionaryTypes[dictionaryType];
+  if (!apiCode) {
+    return `ERROR: "${dictionaryType}" is not a recognized dictionary type.`;
+  }
+  return await fetch(`https://api.datamuse.com/words?${apiCode}=${word}`)
+    .then(res => res.json())
+    .then(res => res)
+    .catch(err => `ERROR from the DataMuse API: ${err}`);
+};
+
+export const fetchData = async (dictionaryType, word) => {
+  const localData = await fetchDataFromLocal(dictionaryType, word);
+  if (localData) {
+    return localData.results;
+  }
+  else {
+    return await fetchDataFromApi(dictionaryType, word)
+      .then(res => {
+        addDataToLocal(dictionaryType, word, res);
+        return res;
       })
-      .catch((err) => {
-        setData(
-          {
-            ...data,
-            [word]: {
-              ...data[word],
-              [usage]: 'ERROR'
-            }
-          }
-        )
-        console.log(err);
-      });
-  };
-
-  const addWord = (word) => setData({...data, [word]: {}});
-  const getRelatedWords = (word) => fetchData('ml', 'related-words', word);
-  const getRhymingWords = (word) => fetchData('rel_rhy', 'rhyming-words', word);
-  const getSynonyms = (word) => fetchData('rel_syn', 'synonyms', word);
-  const getAntonyms = (word) => fetchData('rel_ant', 'antonyms', word);
-
-  return (
-    <ApiContext.Provider value={{ data, addWord, getRelatedWords, getRhymingWords, getSynonyms, getAntonyms }}>
-      {props.children}
-    </ApiContext.Provider>
-  );
+  }
 };

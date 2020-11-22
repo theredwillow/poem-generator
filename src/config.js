@@ -1,3 +1,11 @@
+export const dictionaryTypes = {
+  // TODO 'Definition': '???',
+  'Related Words': 'ml',
+  'Rhyming Words': 'rel_rhy',
+  'Synonyms': 'rel_syn',
+  'Antonyms': 'rel_ant'
+};
+
 export const introPoem = {
   title: "The Poem Generator",
   author: "Jared Weide",
