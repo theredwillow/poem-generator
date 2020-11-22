@@ -29,7 +29,6 @@ const SchemeSelector = () => {
           scheme={validRhymeScheme}
         />
 
-  // FIXME Handle special characters that have been put into the input
   const inputForm = (
     <div id="input-form">
       <div>
@@ -43,7 +42,7 @@ const SchemeSelector = () => {
           value={typed}
           onChange={(e) =>
             setTyped(e.target.value.toUpperCase()
-              .replace(/^ +/g, '').replace(/ +/g, ' '))
+              .replace(/(^ +)|[^ A-Z]/g, '').replace(/ +/g, ' '))
           }
           onKeyPress={(e) => {
             if (e.key === "Enter")
