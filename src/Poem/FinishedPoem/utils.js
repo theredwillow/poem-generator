@@ -21,6 +21,12 @@ const howManyBefore = (str, index) => {
   return ( before.match(re) || '' ).length;
 };
 
+/**
+ * Creates a Nonsense poem out of example lines.
+ * @constructor
+ * @param {string[]} scheme
+ * @param {string[]} availableLines
+*/
 export const createPoem = (scheme, availableLines) => {
   scheme = scheme.trim().toUpperCase();
 
@@ -38,3 +44,15 @@ export const createPoem = (scheme, availableLines) => {
     }
   ));
 };
+
+// TODO Validate that the last words could rhyme too
+/**
+ * Takes a poem and a rhyme scheme and makes sure that they could actually be the same. (Has same number of stanzas, and lines in each of the stanzas.)
+ * @constructor
+ * @param {string[][]} poem
+ * @param {string} scheme
+ */
+export const verifyPoemScheme = (poem, scheme) =>
+  scheme.split(" ").every((stanzaScheme, stanzaNumber) =>
+    stanzaScheme.length === poem[stanzaNumber].length
+  );

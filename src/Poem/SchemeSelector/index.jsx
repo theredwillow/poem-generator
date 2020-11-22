@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { PoemContext } from "../context";
-import { createRhymeScheme } from './utils';
+import { validateRhymeScheme } from './utils';
 import PoemDisplay from "../FinishedPoem/display";
 import {
   introPoem,
@@ -13,14 +13,21 @@ import { createPoem } from "../FinishedPoem/utils";
 const SchemeSelector = () => {
   const {changeRhymeScheme} = useContext(PoemContext);
   const [typed, setTyped] = useState('');
-  const validRhymeScheme = createRhymeScheme(typed);
+  const validRhymeScheme = validateRhymeScheme(typed);
 
-  const providedPoem = exampleRhymeSchemes.find(ex => ex.scheme === validRhymeScheme);
+  const providedRhymeScheme = exampleRhymeSchemes.find(exampleRhymeScheme =>
+    exampleRhymeScheme.examplePoem.scheme === validRhymeScheme
+  );
   const examplePoem = (typed === '')
     ? <PoemDisplay {...introPoem} />
-    : (providedPoem)
-      ? <PoemDisplay {...providedPoem.example} />
-      : <PoemDisplay title="Nonsense" author="The Poem Generator" poem={createPoem(validRhymeScheme, exampleLines)} />
+    : (providedRhymeScheme)
+      ? <PoemDisplay {...providedRhymeScheme.examplePoem} />
+      : <PoemDisplay
+          title="Nonsense"
+          author="The Poem Generator"
+          poem={createPoem(validRhymeScheme, exampleLines)}
+          scheme={validRhymeScheme}
+        />
 
   const inputForm = (
     <div id="input-form">
@@ -61,7 +68,7 @@ const SchemeSelector = () => {
       {/* TODO Create a modal for viewing with additional information */}
       <div id="rhyme-scheme-examples">
         {
-          exampleRhymeSchemes.map(({name, scheme}) => (
+          exampleRhymeSchemes.map(({name, examplePoem: {scheme}}) => (
             <div
               key={name}
               className={`example-scheme ${(scheme === validRhymeScheme) ? "active" : ""}`}

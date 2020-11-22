@@ -11,19 +11,20 @@ export const introPoem = {
   author: "Jared Weide",
   poem: [
     [
-      "Welcome to the poem *creator*,",
-      "I hope that you enjoy *it*.",
-      "It was made by *Jared*,",
-      "he's a *programmer*."
+      "Welcome to my creation!",
+      "I hope it helps your aspiration.",
+      "To help you rhyme",
+      "and write poetry so sublime",
+      "...or at least provide some good foundation"
     ]
-  ]
+  ],
+  scheme: "AABBA"
 };
 
 export const exampleRhymeSchemes = [
   {
     name: "Alternating Rhyme",
-    scheme: "ABAB CDCD EFEF GHGH",
-    example: {
+    examplePoem: {
       title: "Neither Out Far Nor In Deep",
       author: "Robert Frost",
       poem: [
@@ -51,14 +52,13 @@ export const exampleRhymeSchemes = [
           "But when was that ever a bar",
           "To any watch they keep?"
         ]
-      ]
+      ],
+      scheme: "ABAB CDCD EFEF GHGH"
     }
   },
   {
     name: "Ballade",
-    // TODO Add a way to display shortened rhyme schemes? See more?
-    scheme: "ABABBCBC ABABBCBC ABABBCBC BCBC",
-    example: {
+    examplePoem: {
       title: "Ballade of Modest Confession",
       author: "Hilaire Belloc",
       poem: [
@@ -99,13 +99,14 @@ export const exampleRhymeSchemes = [
           "For though you cannot touch my golden Prose,",
           "Painting on Vellum is my weakest point."
         ]
-      ]
+      ],
+      // TODO Add a way to display shortened rhyme schemes? See more?
+      scheme: "ABABBCBC ABABBCBC ABABBCBC BCBC"
     }
   },
   {
     name: "Coupled Rhyme",
-    scheme: "AABB",
-    example: {
+    examplePoem: {
       title: "Excerpt from Green Eggs and Ham",
       author: "Dr. Seuss",
       poem: [
@@ -115,13 +116,13 @@ export const exampleRhymeSchemes = [
           "I do not like green eggs and ham.",
           "I do not like them, Sam-I-Am."
         ]
-      ]
+      ],
+      scheme: "AABB"
     }
   },
   {
     name: "Triplet Rhyme",
-    scheme: "AAA BBB",
-    example: {
+    examplePoem: {
       title: "Upon Julia's Clothes",
       author: "Robert Herrick",
       poem: [
@@ -135,13 +136,13 @@ export const exampleRhymeSchemes = [
           "That brave vibration each way free,",
           "O how that glittering taketh me!"
         ]
-      ]
+      ],
+      scheme: "AAA BBB"
     }
   },
   {
     name: "Monorhyme",
-    scheme: "AAAAAA",
-    example: {
+    examplePoem: {
       title: "Night Storm",
       author: "Marie Summers",
       poem: [
@@ -153,13 +154,13 @@ export const exampleRhymeSchemes = [
           "to layer earth in pure white",
           "and glisten with morning light."
         ]
-      ]
+      ],
+      scheme: "AAAAAA"
     }
   },
   {
     name: "Limerick",
-    scheme: "AABBA",
-    example: {
+    examplePoem: {
       title: "A Young Lady of Lynn",
       poem: [
         [
@@ -169,13 +170,13 @@ export const exampleRhymeSchemes = [
           "To drink lemonade",
           "She slipped through the straw and fell in."
         ]
-      ]
+      ],
+      scheme: "AABBA"
     }
   },
   {
     name: "Villanelle",
-    scheme: "ABA ABA ABA ABA ABA ABAA",
-    example: {
+    examplePoem: {
       title: "Do Not Go Gentle Into That Good Night",
       author: "Dylan Thomas",
       poem: [
@@ -201,13 +202,13 @@ export const exampleRhymeSchemes = [
           "Do not go gentle into that good night.",
           "Rage, rage against the dying of the light."
         ]
-      ]
+      ],
+      scheme: "ABA ABA ABA ABA ABA ABAA"
     }
   },
   {
     name: "Enclosed Rhyme",
-    scheme: "ABBA",
-    example: {
+    examplePoem: {
       // TODO Create a way to denote excerpts, first stanzas, etc...
       title: "First Stanza of Shakespeare",
       author: "Matthew Arnold",
@@ -218,7 +219,8 @@ export const exampleRhymeSchemes = [
           "Out-topping knowledge. For the loftiest hill,",
           "Who to the stars uncrowns his majesty, ..."
         ]
-      ]
+      ],
+      scheme: "ABBA"
     }
   },
 ];

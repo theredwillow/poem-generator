@@ -13,7 +13,7 @@ const UNCHANGED = [" ", "X"];
  * For example, the invalid "ABDE D" would be returned as "ABCD C".
  * @param {string} input 
  */
-export const createRhymeScheme = (input = "") => {
+export const validateRhymeScheme = (input = "") => {
 	input = input.toUpperCase().replace(/[^ A-Z]/g, '').split('');
 	const toBeChanged = input.filter(
 		(l, i, arr) => !UNCHANGED.includes(l) && arr.indexOf(l) === i
