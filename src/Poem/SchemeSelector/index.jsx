@@ -14,6 +14,7 @@ const SchemeSelector = () => {
   const {changeRhymeScheme} = useContext(PoemContext);
   const [typed, setTyped] = useState('');
   const validRhymeScheme = validateRhymeScheme(typed);
+  const [invalidCharacter, setInvalidCharacter] = useState();
 
   const providedRhymeScheme = exampleRhymeSchemes.find(exampleRhymeScheme =>
     exampleRhymeScheme.examplePoem.scheme === validRhymeScheme
@@ -45,14 +46,21 @@ const SchemeSelector = () => {
               .replace(/(^ +)|[^ A-Z]/g, '').replace(/ +/g, ' '))
           }
           onKeyPress={(e) => {
-            if (e.key === "Enter")
+            if (e.key === "Enter") {
               changeRhymeScheme(validRhymeScheme);
+            }
+            else if (/[^ A-Z]/i.test(e.key)) {
+              setInvalidCharacter(e.key);
+            }
+            else if (invalidCharacter) {
+              setInvalidCharacter();
+            }
           } }
         />&nbsp;
         <button onClick={() => changeRhymeScheme(validRhymeScheme)}>Set</button>
         {
           typed.trim().replace(/ +/g, ' ') !== validRhymeScheme &&
-          <div id="scheme-warning">
+          <div id="scheme-warning" className="warning" >
             This rhyme scheme is invalid, it will be converted to&nbsp;
             <span
               id="valid-rhyme-scheme"
@@ -61,6 +69,12 @@ const SchemeSelector = () => {
             >
               "<b>{validRhymeScheme}</b>". (Click here to replace now.)
             </span>
+          </div>
+        }
+        {
+          invalidCharacter &&
+          <div id="typed-warning" className="warning">
+            {invalidCharacter} is not a valid character in rhyme schemes
           </div>
         }
       </div>
