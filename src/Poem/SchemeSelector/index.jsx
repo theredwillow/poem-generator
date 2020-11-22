@@ -14,6 +14,7 @@ const SchemeSelector = () => {
   const {changeRhymeScheme} = useContext(PoemContext);
   const [typed, setTyped] = useState('');
   const validRhymeScheme = validateRhymeScheme(typed);
+  // FIXME Add warning for pasting too?
   const [invalidCharacter, setInvalidCharacter] = useState();
 
   const providedRhymeScheme = exampleRhymeSchemes.find(exampleRhymeScheme =>
