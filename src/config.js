@@ -12,10 +12,10 @@ export const introPoem = {
   poem: [
     [
       "Welcome to my creation!",
-      "I hope it helps your aspiration.",
+      "I hope that it boosts aspiration.",
       "To help you rhyme",
-      "and write poetry so sublime",
-      "...or at least provide some good foundation"
+      "and write poetry sublime",
+      "...or at least provide a decent foundation"
     ]
   ],
   scheme: "AABBA"
