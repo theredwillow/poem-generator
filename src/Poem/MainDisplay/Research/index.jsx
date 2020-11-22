@@ -12,7 +12,11 @@ const Research = () => {
   const [wordCollection, setWordCollection] = useState([]);
   const [input, setInput] = useState('');
 
-  const addWord = (word) => setWordCollection([...wordCollection, word].sort())
+  const addWord = (word) => {
+    if (!wordCollection.includes(word)) {
+      setWordCollection([...wordCollection, word].sort())
+    }
+  }
 
   return (
     <div id="research">
