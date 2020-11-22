@@ -29,6 +29,7 @@ const SchemeSelector = () => {
           scheme={validRhymeScheme}
         />
 
+  // FIXME Handle special characters that have been put into the input
   const inputForm = (
     <div id="input-form">
       <div>
@@ -40,7 +41,9 @@ const SchemeSelector = () => {
           type="text"
           name="name"
           value={typed}
-          onChange={(e) => setTyped(e.target.value.toUpperCase())}
+          onChange={(e) =>
+            setTyped(e.target.value.toUpperCase().replace(/^ +/g, ''))
+          }
           onKeyPress={(e) => {
             if (e.key === "Enter")
               changeRhymeScheme(validRhymeScheme);
@@ -48,7 +51,7 @@ const SchemeSelector = () => {
         />&nbsp;
         <button onClick={() => changeRhymeScheme(validRhymeScheme)}>Set</button>
         {
-          typed !== validRhymeScheme &&
+          typed.trim() !== validRhymeScheme &&
           <div id="scheme-warning">
             This rhyme scheme is invalid, it will be converted to&nbsp;
             <span

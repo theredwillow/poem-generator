@@ -20,7 +20,7 @@ const PoemDisplay = ({title="Untitled", author="Unknown", poem, scheme}) => {
       console.log("Cannot open the rhyme scheme viewer.");
       hasScheme = false;
     } else {
-      scheme = scheme.split(" ");
+      scheme = scheme.trim().split(" ");
     }
   }
 

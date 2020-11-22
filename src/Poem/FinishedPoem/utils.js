@@ -53,6 +53,6 @@ export const createPoem = (scheme, availableLines) => {
  * @param {string} scheme
  */
 export const verifyPoemScheme = (poem, scheme) =>
-  scheme.split(" ").every((stanzaScheme, stanzaNumber) =>
+  scheme.trim().split(" ").every((stanzaScheme, stanzaNumber) =>
     stanzaScheme.length === poem[stanzaNumber].length
   );
