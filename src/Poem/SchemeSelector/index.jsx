@@ -31,6 +31,7 @@ const SchemeSelector = () => {
           scheme={validRhymeScheme}
         />
 
+  // FIXME Losing position on regex changes
   const inputForm = (
     <div id="input-form">
       <div>
@@ -105,6 +106,14 @@ const SchemeSelector = () => {
             rel="noopener noreferrer"
           >
             YourDictionary
+          </a>
+          &nbsp;and&nbsp;
+          <a
+            href="https://literaryterms.net/sonnet/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LiteraryTerms.net
           </a>
           &nbsp;for providing examples.
         </div>
