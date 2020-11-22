@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/poem-generator/precache-manifest.813648693163398ca1af5708d146a787.js"
+  "/poem-generator/precache-manifest.2440eac7a7a2f004c40b7ad7fed100ac.js"
 );
 
 self.addEventListener('message', (event) => {

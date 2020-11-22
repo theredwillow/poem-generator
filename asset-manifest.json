@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/poem-generator/static/css/main.bf22469f.chunk.css",
-    "main.js": "/poem-generator/static/js/main.dce7bbf2.chunk.js",
-    "main.js.map": "/poem-generator/static/js/main.dce7bbf2.chunk.js.map",
+    "main.js": "/poem-generator/static/js/main.251f17b8.chunk.js",
+    "main.js.map": "/poem-generator/static/js/main.251f17b8.chunk.js.map",
     "runtime-main.js": "/poem-generator/static/js/runtime-main.348cb1f9.js",
     "runtime-main.js.map": "/poem-generator/static/js/runtime-main.348cb1f9.js.map",
-    "static/js/2.754ed5a8.chunk.js": "/poem-generator/static/js/2.754ed5a8.chunk.js",
-    "static/js/2.754ed5a8.chunk.js.map": "/poem-generator/static/js/2.754ed5a8.chunk.js.map",
+    "static/js/2.125e300c.chunk.js": "/poem-generator/static/js/2.125e300c.chunk.js",
+    "static/js/2.125e300c.chunk.js.map": "/poem-generator/static/js/2.125e300c.chunk.js.map",
     "index.html": "/poem-generator/index.html",
-    "precache-manifest.813648693163398ca1af5708d146a787.js": "/poem-generator/precache-manifest.813648693163398ca1af5708d146a787.js",
+    "precache-manifest.2440eac7a7a2f004c40b7ad7fed100ac.js": "/poem-generator/precache-manifest.2440eac7a7a2f004c40b7ad7fed100ac.js",
     "service-worker.js": "/poem-generator/service-worker.js",
     "static/css/main.bf22469f.chunk.css.map": "/poem-generator/static/css/main.bf22469f.chunk.css.map",
-    "static/js/2.754ed5a8.chunk.js.LICENSE.txt": "/poem-generator/static/js/2.754ed5a8.chunk.js.LICENSE.txt"
+    "static/js/2.125e300c.chunk.js.LICENSE.txt": "/poem-generator/static/js/2.125e300c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.348cb1f9.js",
-    "static/js/2.754ed5a8.chunk.js",
+    "static/js/2.125e300c.chunk.js",
     "static/css/main.bf22469f.chunk.css",
-    "static/js/main.dce7bbf2.chunk.js"
+    "static/js/main.251f17b8.chunk.js"
   ]
 }
