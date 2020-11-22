@@ -203,7 +203,7 @@ export const exampleRhymeSchemes = [
           "Rage, rage against the dying of the light."
         ]
       ],
-      scheme: "ABA ABA ABA ABA ABA ABAA"
+      scheme: "ABA ABA ABA ABAA"
     }
   },
   {
