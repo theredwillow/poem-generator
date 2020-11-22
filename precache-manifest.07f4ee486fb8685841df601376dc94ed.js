@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8f7e245f88c26eccf379308f4be6b0be",
+    "revision": "54906ffaaa510be5c994c66a65086022",
     "url": "/poem-generator/index.html"
   },
   {
-    "revision": "38f623ac8572b1f15a56",
+    "revision": "6209dfaa75d50922240f",
     "url": "/poem-generator/static/css/main.bf22469f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/poem-generator/static/js/2.125e300c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "38f623ac8572b1f15a56",
-    "url": "/poem-generator/static/js/main.251f17b8.chunk.js"
+    "revision": "6209dfaa75d50922240f",
+    "url": "/poem-generator/static/js/main.e8d8cb5d.chunk.js"
   },
   {
     "revision": "9f1feaae66778219a212",
