@@ -8,4 +8,5 @@ TODO IDEAS
 -There should be shortcuts to tab through the research, stanza lines, and notes, look for a11y guidance
 -On rhyme scheme letter click, a pop up with the currently rhyming words should appear
 -Save rhymes as they appear at end of lines. So that you can see if they match other ends of lines. Use localStorage to autosuggest things that aren't in the research tool, but have already been seen at the end of stanza lines.
+-Calculate if you have enough rhyming words to complete a set
 -Other to-do's in code
